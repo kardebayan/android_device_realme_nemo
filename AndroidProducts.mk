@@ -6,4 +6,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_nemo.mk
+    $(LOCAL_DIR)/custom_nemo.mk
