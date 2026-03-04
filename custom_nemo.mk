@@ -23,6 +23,6 @@ PRODUCT_DEVICE := nemo
 PRODUCT_MANUFACTURER := realme
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildFingerprint=realme/RMX2001/RMX2001L1:10/QP1A.190711.020/1594211000:user/release-keys
+    BuildFingerprint=realme/RMX2001/RMX2001L1:11/RP1A.200720.011/1647528410731:user/release-keys
 
 PRODUCT_GMS_CLIENTID_BASE := android-oppo
