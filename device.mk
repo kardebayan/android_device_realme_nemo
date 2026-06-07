@@ -301,6 +301,8 @@ PRODUCT_SOONG_NAMESPACES += bootable/deprecated-ota
 PRODUCT_PACKAGES += \
     android.hardware.usb-service.mediatek-legacy
 
+$(call soong_config_set_bool,mediatek_gadget,use_custom_usb_gadget_rc,true)
+
 # VNDK
 PRODUCT_PACKAGES += \
     libbase_shim \
