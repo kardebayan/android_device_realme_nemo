@@ -44,10 +44,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth-service.mediatek
 
-# ConfigStore
-PRODUCT_PACKAGES += \
-    disable_configstore
-
 # Doze
 PRODUCT_PACKAGES += \
     OplusDoze
