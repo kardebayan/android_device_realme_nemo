@@ -48,7 +48,10 @@ blob_fixups: blob_fixups_user_type = {
          .add_needed('libbase_shim.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v32.so'),
-    ('vendor/bin/mnld', 'vendor/lib/libcam.utils.sensorprovider.so', 'vendor/lib/libaalservice.so', 'vendor/lib64/libcam.utils.sensorprovider.so', 'vendor/lib64/libaalservice.so'): blob_fixup()
+    'vendor/bin/mnld': blob_fixup()
+        .replace_needed('libmnl.so', 'libmnl_mtk.so')
+        .add_needed('android.hardware.sensors@1.0-convert-shared.so'),
+    ('vendor/lib/libcam.utils.sensorprovider.so', 'vendor/lib/libaalservice.so', 'vendor/lib64/libcam.utils.sensorprovider.so', 'vendor/lib64/libaalservice.so'): blob_fixup()
         .add_needed('android.hardware.sensors@1.0-convert-shared.so'),
     'vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so': blob_fixup()
         .add_needed('libcamera_metadata_shim.so'),
@@ -74,7 +77,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib/libaudio_param_parser-vnd.so': blob_fixup()
         .binary_regex_replace(b'\x00audio.tuning.def_path', b'\x00ro.vendor.tuning_path')
         .binary_regex_replace(b'\x20audio.tuning.def_path', b'\x20ro.vendor.tuning_path'),
-    'vendor/lib/libmnl.so': blob_fixup()
+    'vendor/lib/libmnl_mtk.so': blob_fixup()
          .add_needed('libcutils.so'),
 }  # fmt: skip
 
