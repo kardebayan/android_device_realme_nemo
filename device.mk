@@ -312,6 +312,7 @@ PRODUCT_PACKAGES += \
     TetheringConfigOverlayNemo \
     WifiOverlayNemo \
     hostapd \
+    wlan_assistant \
     wpa_supplicant \
     android.hardware.wifi-service
 
