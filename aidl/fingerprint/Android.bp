@@ -5,39 +5,14 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
-soong_config_module_type {
-    name: "nemo_hardware_biometrics_config_default",
-    module_type: "cc_defaults",
-    config_namespace: "nemo_hardware_biometrics",
-    bool_variables: [
-        "run_32bit",
-    ],
-    properties: ["compile_multilib"],
-}
-
-nemo_hardware_biometrics_config_default {
-    name: "nemo_hardware_biometrics_config_default",
-
-    soong_config_variables: {
-        run_32bit: {
-            conditions_default: {
-                compile_multilib: "64",
-            },
-            compile_multilib: "prefer32",
-        },
-    },
-}
-
 cc_binary {
     name: "android.hardware.biometrics.fingerprint-service.nemo",
-    defaults: ["nemo_hardware_biometrics_config_default"],
     relative_install_path: "hw",
     init_rc: ["android.hardware.biometrics.fingerprint-service.nemo.rc"],
     vintf_fragments: ["android.hardware.biometrics.fingerprint-service.nemo.xml"],
     srcs: [
         "CancellationSignal.cpp",
         "Fingerprint.cpp",
-        "FingerprintConfig.cpp",
         "LockoutTracker.cpp",
         "Session.cpp",
         "service.cpp",
@@ -45,28 +20,20 @@ cc_binary {
     local_include_dirs: [
         "include",
     ],
+    header_libs: [
+        "libhardware_headers",
+    ],
     shared_libs: [
         "libbase",
         "libbinder_ndk",
-        "libcutils",
-        "libhardware",
-        "libdl",
+        "libhidlbase",
         "liblog",
-        "android.hardware.biometrics.fingerprint-V4-ndk",
+        "libutils",
         "android.hardware.biometrics.common-V4-ndk",
-        "android.hardware.biometrics.common.config",
-        "android.hardware.biometrics.common.thread",
         "android.hardware.biometrics.common.util",
+        "android.hardware.biometrics.fingerprint-V4-ndk",
+        "vendor.oplus.hardware.biometrics.fingerprint@2.1",
     ],
-    static_libs: [
-        "libandroid.hardware.biometrics.fingerprint.nemo.Props",
-    ],
-    vendor: true,
-}
-
-sysprop_library {
-    name: "android.hardware.biometrics.fingerprint.nemo.Props",
-    srcs: ["fingerprint.sysprop"],
-    property_owner: "Vendor",
+    compile_multilib: "64",
     vendor: true,
 }

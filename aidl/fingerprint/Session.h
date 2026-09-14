@@ -9,12 +9,14 @@
 
 #include <aidl/android/hardware/biometrics/fingerprint/BnSession.h>
 #include <aidl/android/hardware/biometrics/fingerprint/ISessionCallback.h>
-#include <android/log.h>
-#include <hardware/fingerprint.h>
-#include <hardware/hardware.h>
 #include <log/log.h>
+#include <vendor/oplus/hardware/biometrics/fingerprint/2.1/IBiometricsFingerprint.h>
 
 #include "LockoutTracker.h"
+
+namespace oplus_fp = ::vendor::oplus::hardware::biometrics::fingerprint::V2_1;
+
+using IOplusBiometricsFingerprint = oplus_fp::IBiometricsFingerprint;
 
 using ::aidl::android::hardware::biometrics::common::ICancellationSignal;
 using ::aidl::android::hardware::biometrics::common::OperationContext;
@@ -27,8 +29,9 @@ void onClientDeath(void* cookie);
 
 class Session : public BnSession {
   public:
-    Session(fingerprint_device_t* device, int userId, std::shared_ptr<ISessionCallback> cb,
-            LockoutTracker lockoutTracker);
+    Session(::android::sp<IOplusBiometricsFingerprint> device, int userId,
+            std::shared_ptr<ISessionCallback> cb, LockoutTracker lockoutTracker);
+
     ndk::ScopedAStatus generateChallenge() override;
     ndk::ScopedAStatus revokeChallenge(int64_t challenge) override;
     ndk::ScopedAStatus enroll(const HardwareAuthToken& hat,
@@ -42,10 +45,6 @@ class Session : public BnSession {
     ndk::ScopedAStatus invalidateAuthenticatorId() override;
     ndk::ScopedAStatus resetLockout(const HardwareAuthToken& hat) override;
     ndk::ScopedAStatus close() override;
-    ndk::ScopedAStatus onPointerDown(int32_t pointerId, int32_t x, int32_t y, float minor,
-                                     float major) override;
-    ndk::ScopedAStatus onPointerUp(int32_t pointerId) override;
-    ndk::ScopedAStatus onUiReady() override;
     ndk::ScopedAStatus authenticateWithContext(int64_t operationId, const OperationContext& context,
                                                std::shared_ptr<ICancellationSignal>* out) override;
     ndk::ScopedAStatus enrollWithContext(const HardwareAuthToken& hat,
@@ -53,34 +52,53 @@ class Session : public BnSession {
                                          std::shared_ptr<ICancellationSignal>* out) override;
     ndk::ScopedAStatus detectInteractionWithContext(
             const OperationContext& context, std::shared_ptr<ICancellationSignal>* out) override;
+    ndk::ScopedAStatus onContextChanged(const OperationContext& context) override;
+
+    // Touch reporting is only meaningful for under-display sensors. This one sits in the power
+    // button, so the framework never drives these; they exist to satisfy ISession.
+    ndk::ScopedAStatus onPointerDown(int32_t pointerId, int32_t x, int32_t y, float minor,
+                                     float major) override;
+    ndk::ScopedAStatus onPointerUp(int32_t pointerId) override;
+    ndk::ScopedAStatus onUiReady() override;
     ndk::ScopedAStatus onPointerDownWithContext(const PointerContext& context) override;
     ndk::ScopedAStatus onPointerUpWithContext(const PointerContext& context) override;
-    ndk::ScopedAStatus onContextChanged(const OperationContext& context) override;
     ndk::ScopedAStatus onPointerCancelWithContext(const PointerContext& context) override;
     ndk::ScopedAStatus setIgnoreDisplayTouches(bool shouldIgnore) override;
 
     ndk::ScopedAStatus cancel();
     binder_status_t linkToDeath(AIBinder* binder);
     bool isClosed();
-    void notify(const fingerprint_msg_t* msg);
+
+    // Callbacks from the vendor HAL.
+    void onAcquired(oplus_fp::FingerprintAcquiredInfo acquiredInfo, int32_t vendorCode);
+    void onAuthenticated(uint32_t fingerId, const ::android::hardware::hidl_vec<uint8_t>& token);
+    void onEnrollResult(uint32_t fingerId, uint32_t remaining);
+    void onEnumerate(uint32_t fingerId, uint32_t remaining);
+    void onError(oplus_fp::FingerprintError error, int32_t vendorCode);
+    void onRemoved(uint32_t fingerId, uint32_t remaining);
+    void onSyncTemplates(const ::android::hardware::hidl_vec<uint32_t>& fingerIds);
 
   private:
-    fingerprint_device_t* mDevice;
-    LockoutTracker mLockoutTracker;
-    bool mClosed = false;
-
-    // static ndk::ScopedAStatus ErrorFilter(int32_t error);
-    static Error VendorErrorFilter(int32_t error, int32_t* vendorCode);
-    static AcquiredInfo VendorAcquiredFilter(int32_t info, int32_t* vendorCode);
-
     bool checkSensorLockout();
     void clearLockout(bool clearAttemptCounter);
     void startLockoutTimer(int64_t timeout);
     void lockoutTimerExpired();
 
+    ::android::sp<IOplusBiometricsFingerprint> mDevice;
+    ::android::sp<oplus_fp::IBiometricsFingerprintClientCallback> mVendorCb;
+    LockoutTracker mLockoutTracker;
+    bool mClosed = false;
+
     // lockout timer
     bool mIsLockoutTimerStarted = false;
     bool mIsLockoutTimerAborted = false;
+
+    // The vendor HAL reports enrolled templates through onSyncTemplates instead of answering
+    // enumerate() with onEnumerate, so keep the last set it told us about.
+    std::vector<int32_t> mKnownFingers;
+    bool mReceivedEnumerate = false;
+    bool mReceivedCancel = false;
+    std::vector<int32_t> mPendingEnumeration;
 
     // The user ID for which this session was created.
     int32_t mUserId;

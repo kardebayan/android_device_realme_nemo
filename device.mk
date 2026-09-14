@@ -59,7 +59,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.nemo
+    android.hardware.biometrics.fingerprint-service.nemo
 
 # FM Radio
 PRODUCT_PACKAGES += \
