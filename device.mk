@@ -177,6 +177,7 @@ PRODUCT_PACKAGES += \
     CarrierConfigOverlayNemo \
     FrameworksOverlayRMX2151 \
     FrameworksOverlayRMX2161 \
+    NcmTetheringOverlay \
     SettingsOverlayNemo \
     SettingsProviderOverlay6 \
     SettingsProviderOverlay6i \
