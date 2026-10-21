@@ -886,7 +886,6 @@ vendor/etc/MNL_Config.xml
 vendor/bin/lbs_hidl_service
 vendor/etc/init/lbs_hidl_service.rc
 vendor/lib64/lbs_hidl_service-impl.so
-vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so
 
 # Graphics
 vendor/bin/hw/vendor.mediatek.hardware.gpu@1.0-service
@@ -1161,14 +1160,12 @@ vendor/etc/init/netdagent.rc
 vendor/etc/init/networksetting.rc
 vendor/lib/libsysenv.so
 vendor/lib/libwo.so
-vendor/lib/vendor.mediatek.hardware.netdagent@1.0.so
 vendor/lib64/libforkexecwrap.so
 vendor/lib64/libifcutils_mtk.so
 vendor/lib64/libmtktinyxml.so
 vendor/lib64/libsysenv.so
 vendor/lib64/libwo.so
 vendor/lib64/vendor.mediatek.hardware.mdmonitor@1.0.so
-vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 
 # Radio - from RMX2156_11_F.19
 odm/lib/vendor.oplus.hardware.appradio@1.0.so|7a02d175ae06e8a68abd75e4dd64b5254faa21e4
@@ -1324,8 +1321,6 @@ vendor/lib64/libvia-ril.so|463cc32077f780a02da8b45b5e45403502ada3b3
 vendor/lib64/libviamipc-ril.so|8d486e5e860f0a6bcc36da886b93a1e2533b58f0
 vendor/lib64/libwpfa.so|7d312150d3c11b20337c839ce1e70d10f508a487
 vendor/lib64/vendor.mediatek.hardware.clientapi@1.0.so|b70d776a8d4840f673a39f2a096e0657ddfbb202
-vendor/lib64/vendor.mediatek.hardware.mtkradioex@2.0.so|a2c4bed29dcf0766f636ce5a9ecf905af0e96634
-vendor/lib64/vendor.mediatek.hardware.mtkradioex@3.0.so|6b856ac7c6e64bcf2c56d8a528686ba7fea6adae
 
 # Radio (Configs)
 vendor/etc/ipsec/ipsec.d/cacerts/DigiCertGlobalRootCA.crt
