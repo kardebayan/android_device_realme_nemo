@@ -53,6 +53,8 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcodec2_hidl@1.1.so', 'libcodec2_hidl@1.1-v31.so')
         .replace_needed('libcodec2_hidl@1.2.so', 'libcodec2_hidl@1.2-v31.so')
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
+    ('vendor/bin/hw/android.hardware.secure_element@1.2-service-mediatek', 'vendor/lib64/librilfusion.so'): blob_fixup()
+        .replace_needed('vendor.mediatek.hardware.mtkradioex@3.0.so', 'vendor.mediatek.hardware.mtkradioex@3.0-v31.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v32.so'),
     'vendor/bin/mnld': blob_fixup()
