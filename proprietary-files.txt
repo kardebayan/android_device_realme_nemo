@@ -963,8 +963,6 @@ vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so
 # Media
 vendor/bin/jpegtool
 vendor/etc/media_profiles_V1_0.xml
-vendor/lib/AVCSecureVdecCA.so
-vendor/lib/VP9SecureVdecCA.so
 vendor/lib/libHEVCdec_sa.ca7.android.so;DISABLE_DEPS
 vendor/lib/libbwc.so
 vendor/lib/libh264dec_customize.so
@@ -1025,6 +1023,15 @@ vendor/lib/libvcodec_utility.so|18df857b8ae60a0aaeaab83fe2f911ff115cc9fc
 vendor/lib/libvcodecdrv.so|89101aa52da8b78be5b9235e35b1d1e8f1edc4d1
 vendor/lib/libvp8dec_sa.ca7.so;DISABLE_DEPS|0283ee50aabc1230f55188cfa0ef8ed47e7f89f8
 vendor/lib/libvpud_vcodec.so|6555c59f6e27f28106259193a30de18f8382ae89
+
+# Media (Secure video) - from RMX2156_11_F.19
+vendor/app/mcRegistry/07060000000000000000000000007169.drbin|b8c112092cde5f4162767923f57e6cbae46e1b9e
+vendor/app/mcRegistry/07060000000000000000000000007169.tlbin|b8c112092cde5f4162767923f57e6cbae46e1b9e
+vendor/app/mcRegistry/08020000000000000000000000007169.tabin|27aece3ea18fd3755cdf081b25cc9738f84d6ab8
+vendor/app/mcRegistry/08070000000000000000000000008270.drbin|bcfa80ace7bfc6f95272cdcde13cf7c72b8bb116
+vendor/app/mcRegistry/08070000000000000000000000008270.tlbin|bcfa80ace7bfc6f95272cdcde13cf7c72b8bb116
+vendor/lib/AVCSecureVdecCA.so|04a6278d0309cedc3e005a718c8919749d8a7991
+vendor/lib/VP9SecureVdecCA.so|9a9e9a438bd5ba8ef6cdf2254d2bb50ff52b9ff5
 
 # Media (Mediatek MMS)
 vendor/bin/hw/vendor.mediatek.hardware.mms@1.5-service
@@ -1380,20 +1387,15 @@ vendor/app/mcRegistry/05120000000000000000000000000000.tlbin
 vendor/app/mcRegistry/06090000000000000000000000000000.drbin
 vendor/app/mcRegistry/06090000000000000000000000000000.tlbin
 vendor/app/mcRegistry/0706000000000000000000000000004d.tlbin
-vendor/app/mcRegistry/07060000000000000000000000007169.drbin
-vendor/app/mcRegistry/07060000000000000000000000007169.tlbin
 vendor/app/mcRegistry/07061000000000000000000000000000.tlbin
 vendor/app/mcRegistry/07150000000000000000000000000000.drbin
 vendor/app/mcRegistry/07150000000000000000000000000000.tlbin
 vendor/app/mcRegistry/07170000000000000000000000000000.drbin
 vendor/app/mcRegistry/07170000000000000000000000000000.tlbin
-vendor/app/mcRegistry/08020000000000000000000000007169.tabin
 vendor/app/mcRegistry/08030000000000000000000000000000.tabin
 vendor/app/mcRegistry/08040000000000000000000000003419.tabin
 vendor/app/mcRegistry/08050000000000000000000000003419.drbin
 vendor/app/mcRegistry/08050000000000000000000000003419.tlbin
-vendor/app/mcRegistry/08070000000000000000000000008270.drbin
-vendor/app/mcRegistry/08070000000000000000000000008270.tlbin
 vendor/app/mcRegistry/08110000000000000000000000000000.tabin
 vendor/app/mcRegistry/09010000000000000000000000000000.tabin
 vendor/app/mcRegistry/09030000000000000000000000008270.tabin
