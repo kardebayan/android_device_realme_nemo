@@ -960,31 +960,12 @@ vendor/lib64/libkmsetkey.so
 vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.0.so
 vendor/lib64/vendor.mediatek.hardware.keymaster_attestation@1.1.so
 
-# Media (Codecs)
-vendor/bin/hw/vendor.mediatek.hardware.mtkcodecservice@1.1-service
+# Media
 vendor/bin/jpegtool
-vendor/bin/vpud
-vendor/etc/init/vendor.mediatek.hardware.mtkcodecservice@1.1-service.rc
-vendor/etc/init/vpud.rc
-vendor/etc/media_codecs_c2.xml
-vendor/etc/media_codecs_mediatek_audio.xml
-vendor/etc/media_codecs_mediatek_video.xml
-vendor/etc/media_codecs_performance.xml
 vendor/etc/media_profiles_V1_0.xml
-vendor/etc/mtk_omx_core.cfg
-vendor/lib/hw/vendor.mediatek.hardware.mtkcodecservice@1.1-impl.so
 vendor/lib/AVCSecureVdecCA.so
 vendor/lib/VP9SecureVdecCA.so
 vendor/lib/libHEVCdec_sa.ca7.android.so;DISABLE_DEPS
-vendor/lib/libMtkOmxAdpcmDec.so
-vendor/lib/libMtkOmxAlacDec.so
-vendor/lib/libMtkOmxApeDec.so
-vendor/lib/libMtkOmxCore.so
-vendor/lib/libMtkOmxGsmDec.so
-vendor/lib/libMtkOmxMp3Dec.so
-vendor/lib/libMtkOmxVdecEx.so;DISABLE_DEPS
-vendor/lib/libMtkOmxVenc.so
-vendor/lib/libMtkOmxWmaDec.so
 vendor/lib/libbwc.so
 vendor/lib/libh264dec_customize.so
 vendor/lib/libh264dec_sa.ca7.so;DISABLE_DEPS
@@ -994,24 +975,56 @@ vendor/lib/libh264enc_sa.ca7.so;DISABLE_DEPS
 vendor/lib/libhevce_sb.ca7.android.so;DISABLE_DEPS
 vendor/lib/libjpeg-alpha-oal_vendor.so
 vendor/lib/libjpeg-alpha_vendor.so
-vendor/lib/libmp4enc_sa.ca7.so;DISABLE_DEPS
 vendor/lib/libmp4enc_xa.ca7.so;DISABLE_DEPS
-vendor/lib/libstagefrighthw.so
 vendor/lib/libthha.so;DISABLE_DEPS
 vendor/lib/libvc1dec_sa.ca7.so;DISABLE_DEPS
-vendor/lib/libvcodec_oal.so;DISABLE_DEPS
-vendor/lib/libvcodec_utility.so
-vendor/lib/libvcodecdrv.so
-vendor/lib/libvp8dec_sa.ca7.so;DISABLE_DEPS
 vendor/lib/libvp8enc_sa.ca7.so;DISABLE_DEPS
 vendor/lib/libvp9dec_sa.ca7.so;DISABLE_DEPS
 vendor/lib/libvpu.so
-vendor/lib/libvpud_vcodec.so
-vendor/lib/vendor.mediatek.hardware.mtkcodecservice@1.1.so
 vendor/lib64/libbwc.so
 vendor/lib64/libjpeg-alpha-oal_vendor.so
 vendor/lib64/libjpeg-alpha_vendor.so
 vendor/lib64/libvpu.so
+
+# Media (Codec2) - from RMX2156_11_F.19
+system/lib64/libstagefright_bufferqueue_helper.so:vendor/lib64/libstagefright_bufferqueue_helper-v31.so;FIX_SONAME|d38dfd9f4b9539cd37e5da8f1dff0e371dbaf57d|b34846275e0ffa7fb621282178cb1e160c0510bb
+vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b;SYMLINK=vendor/bin/hw/android.hardware.media.c2@1.2-mediatek|1d84563b223518bfefd6d8b126a0768c5bcab972|912e32774793b96162fbd9df95980854ea36041c
+vendor/etc/init/android.hardware.media.c2@1.2-mediatek.rc|e09ad9455fc75875f6ccef32572bfc0894c98ab5
+vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy|af71935623aa716e9e9d5a38d41f746fb27b2c13
+vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy|45c55f396219ec6326bfe68c22a832177bbdf1a0
+vendor/etc/vintf/manifest/manifest_media_c2_V1_1_default.xml:vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml|9d6aa618b44ce23d3040f1f994692692458a9b7c|622d0480a3af7a162e37c56e0770213d8027000d
+vendor/lib64/libadpcmdec_mtk.so|3f0b72415bc4a4e1e0ba13d8f592fce1e4dfb4eb
+vendor/lib64/libcodec2_hidl@1.0.so:vendor/lib64/libcodec2_hidl@1.0-v31.so;FIX_SONAME|1c4565ef1233d4bd81337359e1939f1e69216cfe|ee24500ca7764bfa68b94eeb6bd222e1836b21a2
+vendor/lib64/libcodec2_hidl@1.1.so:vendor/lib64/libcodec2_hidl@1.1-v31.so;FIX_SONAME|eb7e6c9398a3d27b71fee1c4e5497e7e757dafb6|ecd5ec13ffda4cf5d639d504c173f42d5b5fb4ed
+vendor/lib64/libcodec2_hidl@1.2.so:vendor/lib64/libcodec2_hidl@1.2-v31.so;FIX_SONAME|f9a55c1f72559c3e973af3fc2d6ecc3d3f94a3ea|09427587ba83469cea135b922126dccce562f517
+vendor/lib64/libcodec2_hidl_plugin.so:vendor/lib64/libcodec2_hidl_plugin-v31.so;FIX_SONAME|16359db5d6c7dda7e57b133776a7d07ab32c1bf9|16bce07cd6773ac5b14a7469ea05fb7fbdc5a83c
+vendor/lib64/libcodec2_mtk_c2store.so|ba71d226cca75b93d10a1b2dfabb42ab4ce06557|1f58641e4b7de4167548d510063cdc83cc83812d
+vendor/lib64/libcodec2_mtk_vdec.so|d7dc593d2ac310c1a12d51af223a2e4ff74960a2|d83399314a0baf7ef01de1613bd04a66edc07ad2
+vendor/lib64/libcodec2_mtk_venc.so|709b1f089877b4b432c3589d87ce779d1453696f|1b3603703f3eff14d5b76f5ba7e469b0cde72c7a
+vendor/lib64/libcodec2_soft_common.so:vendor/lib64/libcodec2_soft_common-v31.so;FIX_SONAME|e149fc46fde31904102ce6143900bc2d44ff7464|e2645b2981b5dafe52cfc1dd4d452d04f91a80af
+vendor/lib64/libcodec2_soft_mtk_alacdec.so|71d2b2237dcb8f650c933f640f0e3684fefcb815|5120d9dafbf0bf32ef01565563da99da6692a406
+vendor/lib64/libcodec2_soft_mtk_apedec.so|9286d35b83bb0b828235b842d2d66823e3bf8dab|0de9cad3eae11aea71f87b7af359c56084271c71
+vendor/lib64/libcodec2_soft_mtk_imaadpcmdec.so|b1051a2ce214b95e5313ac3995ae3685f2814e4a|e544bf8542c305411d9461b6596713ab8f51651f
+vendor/lib64/libcodec2_soft_mtk_mp3dec.so|04341dc63da2399a35b974a56c525c4a976b2cb2|518116f7483285ec1f383503f4fa83cc1cfdf770
+vendor/lib64/libcodec2_soft_mtk_msadpcmdec.so|4a2133c7371da2ae78a2ed0a38997c3894d944fa|991d143632f71696113e75a6d53396aed67a4103
+vendor/lib64/libcodec2_soft_mtk_wmadec.so|21206dbe8841b81277ddcfb033e3ef23fedb4d4a|4a386c92720979200126827acc335a87b0800115
+vendor/lib64/libcodec2_vndk.so:vendor/lib64/libcodec2_vndk-v31.so;FIX_SONAME|a1fb154ac021786394894ca98cc26825c6f79dd0|81051a49011793e3321055467552401a6bb94022
+vendor/lib64/libcodec2_vpp_qt_plugin.so|1d8cac061cc92d8d391dd880b54a8322405c0b1f|788b55ef264f84b0a146ac3b790ba563b68b4b9e
+vendor/lib64/libcodec2_vpp_rs_plugin.so|749fa630f4108db4b6cb8cbfcfc7a87fc340f56e|7bf5d970ff9855f12f9a565b4fee49332595e363
+vendor/lib64/libformatter.so:vendor/lib64/libformatter_mtk.so;FIX_SONAME|358e3bd611324bb6bc0f76408b918f0e1948bbc9|f7b366309508d7b55b5ef586a5f479f8b129a9cc
+vendor/lib64/libmp3dec_mtk.so|0802ac29953a52b691474babcd33408e40c10489
+vendor/lib64/libsfplugin_ccodec_utils.so:vendor/lib64/libsfplugin_ccodec_utils-v31.so;FIX_SONAME|f83b240e214793bd3a3f1778d33f50e0f0148622|0e8760b055c99808a8455f286a7d99e26358f048
+
+# Media (VCU) - from RMX2156_11_F.19
+vendor/bin/vpud|bf2f0f244f40ebc371723781660bb4a4fca1a040
+vendor/etc/init/vpud.rc|b4d3ea1ac1b3ab28aed836de823876bc525217e6
+vendor/etc/mtk_platform_codecs_config.xml|f60ac5bf0286d68345fff04cb060e5bccb73b44c
+vendor/lib/libmp4enc_sa.ca7.so;DISABLE_DEPS|4a95f12169f551fa07a9485dfd5b843a9a82e1da
+vendor/lib/libvcodec_oal.so;DISABLE_DEPS|ca61fa2c20c1e2d2a2a76fd5dce5f0e994ab0f75
+vendor/lib/libvcodec_utility.so|18df857b8ae60a0aaeaab83fe2f911ff115cc9fc
+vendor/lib/libvcodecdrv.so|89101aa52da8b78be5b9235e35b1d1e8f1edc4d1
+vendor/lib/libvp8dec_sa.ca7.so;DISABLE_DEPS|0283ee50aabc1230f55188cfa0ef8ed47e7f89f8
+vendor/lib/libvpud_vcodec.so|6555c59f6e27f28106259193a30de18f8382ae89
 
 # Media (Mediatek MMS)
 vendor/bin/hw/vendor.mediatek.hardware.mms@1.5-service
