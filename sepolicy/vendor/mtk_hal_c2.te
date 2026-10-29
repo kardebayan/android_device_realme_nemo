@@ -1,0 +1,1 @@
+allow mtk_hal_c2 apusys_device:chr_file rw_file_perms;

@@ -47,6 +47,12 @@ blob_fixups: blob_fixups_user_type = {
         .apktool_patch('blob-patches/ImsService/'),
     ('vendor/lib/libnvram.so', 'vendor/lib64/libnvram.so', 'vendor/lib/libsysenv.so', 'vendor/lib64/libsysenv.so', 'vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-mtk-neuron') : blob_fixup()
          .add_needed('libbase_shim.so'),
+    'vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b': blob_fixup()
+        .replace_needed('libavservices_minijail_vendor.so', 'libavservices_minijail.so')
+        .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v31.so')
+        .replace_needed('libcodec2_hidl@1.1.so', 'libcodec2_hidl@1.1-v31.so')
+        .replace_needed('libcodec2_hidl@1.2.so', 'libcodec2_hidl@1.2-v31.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
         .add_needed('libutils-v32.so'),
     'vendor/bin/mnld': blob_fixup()
@@ -58,6 +64,52 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libcamera_metadata_shim.so'),
     ('vendor/lib64/libmtkcam_stdutils.so', 'vendor/lib64/hw/dfps.mt6785.so', 'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.6-impl.so'): blob_fixup()
         .replace_needed('libutils.so', 'libutils-v30.so'),
+    'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
+        .regex_replace('1.1', '1.2'),
+    'vendor/lib64/libcodec2_hidl@1.0-v31.so': blob_fixup()
+        .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-v31.so')
+        .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v31.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so')
+        .replace_needed('libui.so', 'libui-v32.so')
+        .add_needed('libbase_shim.so'),
+    'vendor/lib64/libcodec2_hidl@1.1-v31.so': blob_fixup()
+        .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-v31.so')
+        .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v31.so')
+        .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v31.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so')
+        .replace_needed('libui.so', 'libui-v32.so')
+        .add_needed('libbase_shim.so'),
+    'vendor/lib64/libcodec2_hidl@1.2-v31.so': blob_fixup()
+        .replace_needed('libstagefright_bufferqueue_helper.so', 'libstagefright_bufferqueue_helper-v31.so')
+        .replace_needed('libcodec2_hidl@1.0.so', 'libcodec2_hidl@1.0-v31.so')
+        .replace_needed('libcodec2_hidl@1.1.so', 'libcodec2_hidl@1.1-v31.so')
+        .replace_needed('libcodec2_hidl_plugin.so', 'libcodec2_hidl_plugin-v31.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so')
+        .replace_needed('libui.so', 'libui-v32.so')
+        .add_needed('libbase_shim.so'),
+    'vendor/lib64/libcodec2_hidl_plugin-v31.so': blob_fixup()
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
+    ('vendor/lib64/libcodec2_mtk_c2store.so', 'vendor/lib64/libcodec2_vpp_qt_plugin.so', 'vendor/lib64/libcodec2_vpp_rs_plugin.so', 'vendor/lib64/libcodec2_soft_mtk_alacdec.so', 'vendor/lib64/libcodec2_soft_mtk_apedec.so', 'vendor/lib64/libcodec2_soft_mtk_imaadpcmdec.so', 'vendor/lib64/libcodec2_soft_mtk_mp3dec.so', 'vendor/lib64/libcodec2_soft_mtk_msadpcmdec.so', 'vendor/lib64/libcodec2_soft_mtk_wmadec.so'): blob_fixup()
+        .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v31.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
+        .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v31.so'),
+    ('vendor/lib64/libcodec2_mtk_vdec.so', 'vendor/lib64/libcodec2_mtk_venc.so'): blob_fixup()
+        .replace_needed('libcodec2_soft_common.so', 'libcodec2_soft_common-v31.so')
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so')
+        .replace_needed('libformatter.so', 'libformatter_mtk.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
+        .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v31.so')
+        .replace_needed('libui.so', 'libui-v32.so'),
+    'vendor/lib64/libcodec2_soft_common-v31.so': blob_fixup()
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
+        .replace_needed('libsfplugin_ccodec_utils.so', 'libsfplugin_ccodec_utils-v31.so'),
+    'vendor/lib64/libcodec2_vndk-v31.so': blob_fixup()
+        .replace_needed('libui.so', 'libui-v32.so')
+        .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
+    'vendor/lib64/libsfplugin_ccodec_utils-v31.so': blob_fixup()
+        .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
     'vendor/lib64/libmtkcam_featurepolicy.so': blob_fixup()
         .binary_regex_replace(b'\x34\xE8\x87\x40\xB9', b'\x34\x28\x02\x80\x52'),
     'vendor/lib64/lib3a.flash.so': blob_fixup()
@@ -69,12 +121,6 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/lib/hw/audio.primary.mt6785.so': blob_fixup()
         .add_needed('libshim_audio.so')
         .replace_needed('libalsautils.so','libalsautils-v30.so'),
-    'vendor/lib/libMtkOmxCore.so': blob_fixup()
-        .binary_regex_replace(b'mtk.vendor.omx.core.log', b'ro.vendor.mtk.omx.log\x00\x00'),
-    'vendor/lib/libMtkOmxVdecEx.so': blob_fixup()
-        .replace_needed('libui.so','libui-v32.so')
-        .binary_regex_replace(b'ro.mtk_crossmount_support', b'ro.vendor.mtk_crossmount\x00')
-        .binary_regex_replace(b'ro.mtk_deinterlace_support', b'ro.vendor.mtk_deinterlace\x00'),
     'vendor/lib/libaudio_param_parser-vnd.so': blob_fixup()
         .binary_regex_replace(b'\x00audio.tuning.def_path', b'\x00ro.vendor.tuning_path')
         .binary_regex_replace(b'\x20audio.tuning.def_path', b'\x20ro.vendor.tuning_path'),

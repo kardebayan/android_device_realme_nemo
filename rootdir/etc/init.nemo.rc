@@ -73,16 +73,11 @@ on property:sys.boot_completed=1
     # OTG
     write /sys/class/power_supply/usb/otg_switch 1
 
+    # Codec2
+    restart android-hardware-media-c2-hal-1-2
+
 on property:persist.vendor.radio.port_index=""
     setprop sys.usb.config adb
-
-service vendor.media.omx /vendor/bin/hw/android.hardware.media.omx@1.0-service
-    override
-    class main
-    user mediacodec
-    group camera drmrpc mediadrm system
-    ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks
 
 on property:ro.vendor.nfc_device=1
     setprop ro.boot.product.hardware.sku nfc
