@@ -1511,6 +1511,7 @@ vendor/etc/init/init.wmt_drv.rc
 vendor/etc/wifi/p2p_supplicant_overlay.conf
 vendor/etc/wifi/wpa_supplicant.conf
 vendor/etc/wifi/wpa_supplicant_overlay.conf
+vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-mtk.so;FIX_SONAME
 vendor/lib64/libwifitest.so
 
 # Wifi (Firmware)
