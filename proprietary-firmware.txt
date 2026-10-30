@@ -1,4 +1,4 @@
-# Unpinned blobs from RMX2002_11.C.19.
+# Unpinned blobs from RMX2002_11.C.19
 
 audio_dsp.img
 cam_vpu1.img
@@ -8,12 +8,14 @@ cdt_engineering.img
 dtbo.img
 gz.img
 logo.bin
-md1img.img
 preloader_ufs.img
 scp.img
 spmfw.img
 sspm.img
 tee.img
+
+# Modem - from RMX2156_11_F.19
+md1img.img|e1c69185ab81151a2b9a530d35c089a23289a5fa
 
 # Patched lk by @antagonizzzt
 lk.img|5c8952674ab8ae8eed5140ea05718d0de6c0dfeb
