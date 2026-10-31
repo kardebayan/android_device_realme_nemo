@@ -54,6 +54,7 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libcodec2_hidl@1.2.so', 'libcodec2_hidl@1.2-v31.so')
         .replace_needed('libcodec2_vndk.so', 'libcodec2_vndk-v31.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
+        .add_needed('libshim_ril.so')
         .add_needed('libutils-v32.so'),
     'vendor/bin/mnld': blob_fixup()
         .replace_needed('libmnl.so', 'libmnl_mtk.so')
