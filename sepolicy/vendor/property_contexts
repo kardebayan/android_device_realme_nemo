@@ -9,3 +9,4 @@ vendor.fingerprint.                         u:object_r:vendor_fingerprint_prop:s
 # Vendor device
 ro.vendor.device                            u:object_r:vendor_device_prop:s0
 ro.vendor.nfc_device                        u:object_r:vendor_device_prop:s0
+ro.vendor.power_profile.device              u:object_r:vendor_device_prop:s0
