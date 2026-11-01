@@ -311,9 +311,8 @@ PRODUCT_SOONG_NAMESPACES += bootable/deprecated-ota
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb-service.mediatek-legacy
-
-$(call soong_config_set_bool,mediatek_gadget,use_custom_usb_gadget_rc,true)
+    android.hardware.usb-service.mediatek \
+    android.hardware.usb.gadget-service.mediatek
 
 # VNDK
 PRODUCT_PACKAGES += \

@@ -36,3 +36,5 @@ genfscon sysfs /devices/platform/charger/power_supply/ac/wakeup18               
 genfscon sysfs /devices/platform/charger/power_supply/battery/wakeup19                                          u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/charger/power_supply/usb/wakeup19                                              u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/charger/power_supply/battery/wakeup20                                          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/usb0                             u:object_r:sysfs_usb_nonplat:s0
+genfscon sysfs /devices/platform/rt-pd-manager/typec/port0/            u:object_r:sysfs_usb_nonplat:s0
