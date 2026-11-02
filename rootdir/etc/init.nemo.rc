@@ -23,9 +23,6 @@ on post-fs-data
     write /sys/class/leds/vibrator/ram_update 1
 
 on boot
-    # Power HAL
-    setprop vendor.powerhal.init 1
-
     # Touchpanel
     chown system system /proc/touchpanel/tp_fw_update
     chown system system /proc/touchpanel/oplus_tp_limit_enable
