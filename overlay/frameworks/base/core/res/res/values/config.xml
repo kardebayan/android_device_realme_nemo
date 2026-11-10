@@ -544,4 +544,9 @@
     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
         <item>com.android.touch.gestures.KeyHandler</item>
     </string-array>
+
+    <!-- Used to detect whether an oem fast charger is active -->
+    <string-array name="config_oemFastChargerStatusPaths" translatable="false">
+        <item>/sys/class/power_supply/battery/fastcharger;1</item>
+    </string-array>
 </resources>
