@@ -106,18 +106,6 @@ on post-fs
     #change permissions for mediaserver
     chown root media /proc/clkmgr/mipi_test
 
-    #change permission for engineer mode
-    chown radio system /proc/clkmgr/pll_test
-    chown radio system /proc/clkmgr/pll_fsel
-    chmod 0664 /proc/clkmgr/pll_test
-    chmod 0664 /proc/clkmgr/pll_fsel
-    #change permission for engineer mode
-    chown radio system /proc/freqhopping/dramc
-    chown radio system /proc/freqhopping/dumpregs
-    chown radio system /proc/freqhopping/freqhopping_debug
-    chown radio system /proc/freqhopping/status
-    chown radio system /proc/freqhopping/userdef
-
 # change owner
     chown system system /proc/bootprof
     chmod 0664 /proc/bootprof
@@ -394,9 +382,6 @@ on post-fs-data
     chown system /sys/class/input/input10/wake
     chown system /sys/class/input/input10/offsets
 
-    #EM eint
-    chown root diag /sys/bus/platform/drivers/eint/current_eint
-
     # Display
     chmod 0660 /dev/graphics/fb0
     chown system graphics /dev/graphics/fb0
@@ -410,10 +395,6 @@ on post-fs-data
     chmod 0660 /dev/sw_sync
     chown system graphics /dev/sw_sync
 
-    # EM baseband file
-    chown root diag /vendor/bin/baseband_regdump
-    chmod 4750 /vendor/bin/baseband_regdump
-
     #pmu
     chown root radio /sys/devices/platform/mt-pmic/pmic_access_bank0
     chown root radio /sys/devices/platform/mt-pmic/pmic_access_bank1
@@ -423,19 +404,6 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access_bank1
     chmod 0664 /sys/devices/platform/mt6311-user/mt6311_access
     chmod 0664 /sys/devices/platform/mt-pmic/pmic_access
-
-    # EM CPU Speed Stress
-    chown root radio /proc/cpu_ss/cpu_ss_debug_mode
-    chown root radio /proc/cpu_ss/cpu_ss_mode
-    chown root radio /proc/cpu_ss/cpu_ss_period
-    chown root radio /proc/cpu_ss/cpu_ss_period_mode
-    chmod 0664 /proc/cpu_ss/cpu_ss_debug_mode
-    chmod 0664 /proc/cpu_ss/cpu_ss_mode
-    chmod 0664 /proc/cpu_ss/cpu_ss_period
-    chmod 0664 /proc/cpu_ss/cpu_ss_period_mode
-
-    #EM eint
-    chown root diag /sys/bus/platform/drivers/eint/current_eint
 
     # Android SEC related device nodes
     chmod 0660 /dev/sec
