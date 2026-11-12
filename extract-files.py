@@ -71,6 +71,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libcamera_metadata_shim.so'),
     ('vendor/lib64/libmtkcam_stdutils.so', 'vendor/lib64/hw/dfps.mt6785.so', 'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.6-impl.so'): blob_fixup()
         .replace_needed('libutils.so', 'libutils-v30.so'),
+    'vendor/etc/audio_policy_volumes.xml': blob_fixup()
+        .regex_replace(r'(<volume stream="AUDIO_STREAM_MUSIC" deviceCategory="DEVICE_CATEGORY_SPEAKER")\n\s+ref="DEFAULT_DEVICE_CATEGORY_SPEAKER_VOLUME_CURVE"/>', r'\1>\n            <point>1,-5100</point>\n            <point>2,-4400</point>\n            <point>3,-3900</point>\n            <point>4,-3400</point>\n            <point>5,-3100</point>\n            <point>6,-2800</point>\n            <point>7,-2500</point>\n            <point>8,-2400</point>\n            <point>9,-2200</point>\n            <point>10,-2000</point>\n            <point>11,-1800</point>\n            <point>12,-1700</point>\n            <point>13,-1500</point>\n            <point>14,-1400</point>\n            <point>15,-1300</point>\n    </volume>'),
     'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
         .regex_replace('1.1', '1.2'),
     'vendor/lib64/libcodec2_hidl@1.0-v31.so': blob_fixup()
