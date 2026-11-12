@@ -39,6 +39,8 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    ('odm/etc/audio/audio_device/audio_device.xml', 'odm/etc/audio/audio_device/common/audio_device.xml'): blob_fixup()
+        .regex_replace(r'(<path name="(?:headphoneS|s)peaker_output" value="turnon">\n)', r'\1            <kctl name="Lineout_PGAL_GAIN" value="-1Db" />\n            <kctl name="Lineout_PGAR_GAIN" value="-1Db" />\n'),
     'system_ext/lib64/libimsma.so': blob_fixup()
         .replace_needed('libsink.so', 'libsink-mtk.so'),
     'system_ext/lib64/libsink-mtk.so': blob_fixup()
