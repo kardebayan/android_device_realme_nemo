@@ -185,7 +185,14 @@ PRODUCT_PACKAGES += \
     SettingsProviderOverlay7 \
     SettingsProviderOverlayNarzo \
     SettingsProviderOverlayNarzo20Pro \
-    SettingsProviderOverlayNarzo30
+    SettingsProviderOverlayNarzo30 \
+    WifiOverlay6 \
+    WifiOverlay6i \
+    WifiOverlay6s \
+    WifiOverlay7 \
+    WifiOverlayNarzo \
+    WifiOverlayNarzo20Pro \
+    WifiOverlayNarzo30
 
 # RRO (Runtime Resource Overlay)
 PRODUCT_ENFORCE_RRO_TARGETS += *
